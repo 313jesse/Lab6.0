@@ -11,25 +11,64 @@ namespace Lab6._0
 
         static void Main(string[] args)
         {
-            //static int Rando(int sides)
-            //{
+Console.WriteLine("Welcome to the Underground Grand Circus Casino!");
+            bool play = true;
+            while (play)
+            {
+
+                while (true)
+                {
+                    try
+                    {
+                        
+                        Console.WriteLine("How many sides would you like on your dice?");
+                        int userHigh = int.Parse(Console.ReadLine());
+                        //after testing realized that the "high" is not equal to user high, but 1 less, so I added +1 to fix
+                        RandNumber(1, userHigh + 1);
+                        RandNumber(1, userHigh + 1);
+
+                        Console.WriteLine("Would you like to roll again? (Y/N): ");
+                        string playAgain = Console.ReadLine();
 
 
-                int userHigh;
-                Random Roll = new Random();
-                Console.WriteLine("How many sides would you like on your first die?");
-                userHigh = int.Parse(Console.ReadLine());
-                int Dice1 = Roll.Next(1, userHigh);
-            //}
-        
+                        if (playAgain == "y" || playAgain == "Y")
 
-            int userHigh2;
-            Random Roll2 = new Random();
-            Console.WriteLine("How many sides would you like on your second die?");
-            userHigh2 = int.Parse(Console.ReadLine());
-            int Dice2 = Roll.Next(1, userHigh2);
-            Console.WriteLine($"you rolled a {1} and a {2}", Dice1, Dice2);
+                        {
+                            play = true;
+                        }
+
+                        else if (playAgain == "n" || playAgain == "N")
+
+                        {
+                            play = false;
+                            Console.WriteLine("Thanks for playing.");
+                            break;
+
+                        }
+                    }
+
+
+
+                    catch (Exception e)
+                    { }
+
+
+                        
+
+                        }
+                    }
+                    }
+        public static void RandNumber(int Low, int High)
+        {
+
+            //stolen code from the internet to create more accurate rando num generator
+            Random rndNum = new Random(int.Parse(Guid.NewGuid().ToString().Substring(0, 8), System.Globalization.NumberStyles.HexNumber));
+
+            int rnd = rndNum.Next(Low, High);
+            Console.WriteLine("you rolled a " + rnd);
+            {
+            }
+            }
 
         }
-    }
-}
+    }  
